@@ -6,13 +6,14 @@ using System.Linq;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using YFFL.Server.GameDataService.Domain;
+using YFFL.Server.GameDataService.Services;
 using YFFL.Server.GameDataService.Vendor.Yahoo.GameData;
 
 namespace YFFL.Server.GameDataService.Vendor.Yahoo.GameData
 {
-	public class YahooGameDataService
+	public class YahooPlayerGameDataService : IPlayerGameDataService
 	{
-		public NFLPlayerGameDataResponse GetPlayerGameData(int season, int week)
+		public PlayerGameDataResponse GetPlayerGameData(int season, int week)
 		{
 			var scoreboard = GetScoreboard(season, week);
 			var errors = new List<Exception>();
@@ -30,12 +31,12 @@ namespace YFFL.Server.GameDataService.Vendor.Yahoo.GameData
                         {
                             errors.Add(x);
                         }
-                        return Array.Empty<NFLPlayerGameData>();
+                        return Array.Empty<PlayerGameData>();
                     }
                 })
                 .ToArray();
 
-			return new NFLPlayerGameDataResponse
+			return new PlayerGameDataResponse
 			{
 				Results = res,
 				Errors = errors
@@ -51,7 +52,7 @@ namespace YFFL.Server.GameDataService.Vendor.Yahoo.GameData
 		}
 
 
-		private ICollection<NFLPlayerGameData> GetPlayerGameData(string boxScoreLink)
+		private ICollection<PlayerGameData> GetPlayerGameData(string boxScoreLink)
         {
 			try
             {
@@ -86,7 +87,7 @@ namespace YFFL.Server.GameDataService.Vendor.Yahoo.GameData
             }
 		}
 
-		private NFLPlayerGameData Map(string playerId, PlayerStats stats, Dictionary<string, Player> playerMap, Dictionary<string, Team> teamMap)
+		private PlayerGameData Map(string playerId, PlayerStats stats, Dictionary<string, Player> playerMap, Dictionary<string, Team> teamMap)
         {
 			var player = playerMap[playerId];
 			try
@@ -94,7 +95,7 @@ namespace YFFL.Server.GameDataService.Vendor.Yahoo.GameData
 				var position = GetNFLPosition(player.PrimaryPositionId);
 				var team = teamMap[player.TeamId];
 
-				var res = new NFLPlayerGameData
+				var res = new PlayerGameData
 				{
 					Player = new NFLPlayer
 					{

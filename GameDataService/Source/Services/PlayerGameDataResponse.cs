@@ -1,13 +1,14 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using YFFL.Server.GameDataService.Domain;
 
-namespace YFFL.Server.GameDataService.Domain
+namespace YFFL.Server.GameDataService.Services
 {
-    public class NFLPlayerGameDataResponse
+    public class PlayerGameDataResponse
     {
         [JsonProperty("results")]
-        public ICollection<NFLPlayerGameData> Results { get; set; }
+        public ICollection<PlayerGameData> Results { get; set; }
 
         [JsonProperty("errors")]
         public ICollection<Exception> Errors { get; set; }

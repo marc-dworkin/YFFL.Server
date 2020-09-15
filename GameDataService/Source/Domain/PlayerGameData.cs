@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace YFFL.Server.GameDataService.Domain
 {
     //TODO: Fumbles
-    public class NFLPlayerGameData
+    public class PlayerGameData
     {
         [JsonProperty("player")]
         public NFLPlayer Player { get; set; }
