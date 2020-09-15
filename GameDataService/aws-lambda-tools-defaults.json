@@ -10,9 +10,9 @@
     "region"      : "us-east-2",
     "configuration" : "Release",
     "framework"     : "netcoreapp3.1",
-    "s3-prefix"     : "yffl-server/",
+    "s3-prefix"     : "game-day-service/",
     "template"      : "serverless.template",
-    "template-parameters" : "\"ShouldCreateBucket\"=\"true\";\"BucketName\"=\"\"",
+    "template-parameters" : "\"ShouldCreateBucket\"=\"true\";\"BucketName\"=\"yffl-server-data\"",
     "s3-bucket"           : "yffl-server-deployment",
     "stack-name"          : "yffl-server"
 }

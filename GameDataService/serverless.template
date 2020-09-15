@@ -39,7 +39,7 @@
     "AspNetCoreFunction": {
       "Type": "AWS::Serverless::Function",
       "Properties": {
-        "Handler": "yffl-server::YFFL.Server.GameDataService.LambdaEntryPoint::FunctionHandlerAsync",
+        "Handler": "GameDataService::YFFL.Server.GameDataService.LambdaEntryPoint::FunctionHandlerAsync",
         "Runtime": "dotnetcore3.1",
         "CodeUri": "",
         "MemorySize": 256,

@@ -11,11 +11,12 @@
     "IIS Express": {
       "commandName": "IISExpress",
       "launchBrowser": true,
+      "launchUrl": "swagger",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "yffl-server": {
+    "GameDataService": {
       "commandName": "Project",
       "launchBrowser": true,
       "environmentVariables": {
